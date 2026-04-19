@@ -57,7 +57,10 @@ def calculate_meal_macros(meal_entries) -> dict:
         food = entry.food
         if food is None:
             continue
-        ratio = entry.amount_grams / 100.0
+        amount = entry.amount_grams
+        if not amount or amount <= 0:
+            continue
+        ratio = amount / 100.0
         totals["calories"] += food.calories_per_100g * ratio
         totals["protein"] += food.protein_per_100g * ratio
         totals["carbs"] += food.carbs_per_100g * ratio

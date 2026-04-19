@@ -134,7 +134,7 @@ def render():
                 return ""
 
             st.dataframe(
-                df.style.applymap(color_status, subset=["Status"]),
+                df.style.map(color_status, subset=["Status"]),
                 use_container_width=True,
             )
 

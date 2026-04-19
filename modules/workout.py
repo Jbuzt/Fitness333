@@ -200,6 +200,8 @@ def render():
                     df = pd.DataFrame(rows)
                     df["date"] = pd.to_datetime(df["date"])
                     df["1RM_estimate"] = df["weight_kg"] * (1 + df["reps"] / 30)
+                    # Note: Epley 1RM formula is most accurate for rep ranges of 1–10;
+                    # accuracy decreases at higher rep counts (>10–12 reps).
 
                     fig = px.line(df, x="date", y="weight_kg", title=f"{sel_ex} — Weight Over Time",
                                   markers=True)

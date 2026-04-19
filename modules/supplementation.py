@@ -212,6 +212,10 @@ def render():
         st.plotly_chart(fig, use_container_width=True)
 
         st.markdown("### Cost Summary")
+        st.caption(
+            "ℹ️ Monthly cost = daily_dose × 30 × cost_per_unit. "
+            "Ensure daily_dose and cost_per_unit use the same unit (e.g. both in grams, or both per capsule)."
+        )
         cost_data = []
         for s in supplements:
             if s.daily_dose and s.daily_dose > 0 and s.cost_per_unit > 0:
